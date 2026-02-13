@@ -10,9 +10,6 @@ Vérifier que l’**AVD** est bien détecté avant de commencer le lab.
 2. Ouvrir PowerShell dans `platform-tools`.
 3. Exécuter :
 
-```powershell
-.\adb.exe devices \ 
-
 ## Partie 2 — Étape 1 : Rooter l’AVD
 
 ### Objectif
