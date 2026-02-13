@@ -19,7 +19,4 @@ Obtenir des privilèges **root** sur un **AVD** (environnement jetable) et obser
 - AVD démarré
 - `adb` détecte l’émulateur
 
-### Commandes + Résultats (preuve)
-```powershell
-adb devices
 
