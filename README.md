@@ -20,3 +20,17 @@ Obtenir des privilèges **root** sur un **AVD** (environnement jetable) et obser
 - `adb` détecte l’émulateur
 
 
+
+
+### Où trouver le fichier logcat
+Le fichier a été généré dans le dossier de travail utilisé pendant l’export, ici :
+
+`C:\Users\Ismai\lab_logs\logcat_root_check.txt`
+
+Pour l’ouvrir rapidement :
+```powershell
+explorer .
+notepad .\logcat_root_check.txt
+
+
+
