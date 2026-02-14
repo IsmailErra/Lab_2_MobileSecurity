@@ -96,6 +96,7 @@ L’application de test (**DIVA**) a été récupérée depuis GitHub (dépôt c
 ### Version (rapport)
 La version de l’application a été relevée (car le comportement de sécurité peut varier selon la version).
 
+### Résultat attendu
 ![](lb2/afterDivaInstall.png)
 
 
