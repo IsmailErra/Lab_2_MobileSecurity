@@ -215,3 +215,113 @@ Cas concret : avec les privilèges root, on peut vérifier si l’app compte seu
 Contexte légal : selon le pays, le rooting peut enfreindre des conditions d’utilisation (voire des règles sur le contournement de protections), donc il faut une autorisation explicite pour tester.
 
 ---
+## Étape 11 : Matrice de risques (8 risques)
+
+1) **Intégrité non garantie** → conclusions possiblement biaisées ; **atténuation :** signaler l’état (AVB/verity) et comparer avec un AVD “propre”.  
+2) **Surface d’attaque accrue hors labo** → exposition à des menaces externes ; **atténuation :** usage strict “labo uniquement” + pas d’usage quotidien.  
+3) **Données sensibles exposées** → risque de confidentialité ; **atténuation :** ne jamais utiliser de vraies données + jeux de données fictifs.  
+4) **Instabilité système** → tests peu reproductibles ; **atténuation :** documenter versions/étapes + refaire sur snapshot/AVD neuf.  
+5) **Mélange comptes perso/test** → fuite d’infos personnelles ; **atténuation :** aucun compte personnel, profils séparés.  
+6) **Nettoyage insuffisant en fin de séance** → données qui restent ; **atténuation :** wipe/reset AVD + suppression des fichiers de test.  
+7) **Réseau non isolé** → impacts involontaires sur l’extérieur ; **atténuation :** réseau de labo isolé / pas de services réels.  
+8) **Traçabilité insuffisante** → difficile d’auditer/rejouer ; **atténuation :** captures + logs + checklist des commandes.
+
+---
+## Étape 12 : Mesures défensives (8 mesures)
+
+1) **Réseau isolé** pour éviter toute communication non contrôlée avec l’extérieur.  
+2) **Données fictives uniquement** afin d’éliminer le risque de fuite de données réelles.  
+3) **Device/AVD dédié** exclusivement aux tests de sécurité, sans usage quotidien.  
+4) **Snapshots ou wipe en fin de séance** pour revenir à un état propre et ne rien laisser persister.  
+5) **Journal de configuration détaillé** (versions, paramètres, commandes) pour garantir la reproductibilité.  
+6) **Aucun compte personnel** pour éviter tout mélange entre données privées et données de test.  
+7) **Contrôle strict des APK installées** (source, intégrité, nécessité) pour limiter l’exposition.  
+8) **Horodatage + captures** des étapes pour une traçabilité claire et vérifiable.  
+
+*Analogie : comme dans un labo manipulant des substances dangereuses — isolement, matériel dédié, “décontamination” (wipe/snapshots) et documentation rigoureuse.*
+
+---
+## Étape 13 : OWASP MASVS (2 exigences)
+
+OWASP est une référence en sécurité, et le **MASVS** est un standard pour évaluer la sécurité des applications mobiles.
+
+- **STORAGE-1 :** Les données sensibles (clés API, mots de passe, tokens) ne doivent pas être stockées “en clair” ; elles doivent être protégées avec un chiffrement adapté et des mécanismes de stockage sûrs.  
+- **NETWORK-1 :** Les communications réseau doivent utiliser **TLS** correctement (certificats vérifiés, configuration solide) pour éviter l’écoute ou la modification du trafic.
+
+Application pratique (labo) : avec des privilèges root, on peut inspecter les fichiers locaux de l’app et observer le trafic réseau pour voir si ces exigences sont respectées.
+
+---
+## Étape 14 : OWASP MASTG (2 idées de tests)
+
+Le **MASVS** décrit *quoi* vérifier, tandis que le **MASTG** explique *comment* le vérifier (guide pratique de tests).
+
+- **Idée de test 1 (stockage) :** Inspecter les préférences partagées pour repérer des infos sensibles en clair (ex. dans `/data/data/[package_name]/shared_prefs/`) et vérifier si elles sont protégées.  
+- **Idée de test 2 (runtime/logs) :** Analyser les logs via `adb logcat` pour détecter des fuites d’informations sensibles pendant l’exécution (identifiants, tokens, données utilisateur).
+
+Astuce : avec les privilèges root (labo), l’accès à `/data/data/` devient possible, alors que ce dossier est normalement isolé par Android.
+
+
+---
+## Étape 15 : Commandes de rooting (rappel synthèse)
+
+### Commandes (AVD / émulateur)
+powershell
+-adb devices
+-adb root
+-adb remount
+-adb shell id
+-adb shell getprop ro.boot.veritymode
+-adb shell getprop ro.boot.vbmeta.device_state
+-adb shell "su -c id"
+
+---
+## Étape 16 : Traçabilité : fiche environnement (1 page)
+
+### Date / Auteur
+- Date : 14/02/2026  
+- Auteur : Erraouidate IsmaiL
+
+### Support
+- Support : AVD (Android Emulator) — environnement de labo uniquement
+
+### Version Android / API
+- Android / API : Android 15 (API 35) *(selon AVD)*
+
+### Application testée + version
+- App : DIVA (APK depuis GitHub)
+
+### 3 scénarios (répétables)
+1) `1. Insecure Logging` → valeur `0` → bouton **CHECK OUT** → message observé.  
+2) `13. Input Validation Issues - Part 3` → entrée `ew` → bouton **PUSH THE RED BUTTON** → `Access denied!`  
+3) `3. Insecure Data Storage - Part 1` → email `ismai@emsi` + mot de passe test → **SAVE** → `3rd party credentials saved successfully!`
+
+### Observations factuelles (exemples)
+- `adb root` : adbd en mode root (uid=0 via `adb shell id`).  
+- Verified Boot state : `ro.boot.verifiedbootstate` non retourné (vide sur cette image AVD).  
+- `ro.boot.avb_version = 1.3`, `ro.boot.veritymode = enforcing`, `vbmeta.digest` présent.
+
+### Limites
+- Propriété `ro.boot.verifiedbootstate` vide sur l’AVD utilisé (pas d’indication “green/yellow/orange/red” affichée).
+- Résultats valables pour un **émulateur** (peuvent différer d’un device réel).
+
+### Reset effectué
+- Reset/Wipe/Snapshot   
+- Preuve : capture (Device Manager : Wipe Data / Snapshot / nouvel AVD propre) ou mention du reset + état AVD propre.
+
+
+---
+## Étape 17 — Remise à zéro AVD (obligatoire fin de séance)
+
+### Méthode utilisée (UI)
+Android Studio → **Device Manager** → (AVD) → **Wipe Data**.
+
+### Pourquoi c’est crucial
+Ne pas réinitialiser l’environnement laisse des données et traces de tests (risque de contamination des résultats et exposition de données pour la séance suivante).
+
+### Preuve de reset
+Après redémarrage, l’AVD revient à un état “neuf” (applications/état initial), visible sur l’écran et confirmé par une capture **Avant / Après**.
+
+### Résultat attendu
+![](lb2/BeforAfterWipe.png)
+
+
