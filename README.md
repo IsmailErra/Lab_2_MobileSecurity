@@ -200,3 +200,18 @@ Il ajoute aussi une défense contre le **rollback**, pour éviter de revenir à 
 Protection anti-rollback : bloquer l’installation d’anciens builds potentiellement vulnérables, comme empêcher de remplacer une serrure récente par un modèle dépassé plus facile à forcer.
 
 ---
+## Étape 9 : Définir le rooting (4 phrases)
+Le **Root** correspond à l’obtention de privilèges **super-utilisateur** sur Android.  
+Il change les barrières de sécurité et affaiblit la confiance accordée au système au démarrage et à l’exécution.  
+En labo, c’est pratique pour observer des comportements et tester des contrôles normalement inaccessibles.  
+C’est toutefois risqué : il faut un environnement isolé, garder des traces (logs/captures) et prévoir un reset, comme un passe-partout utile en maintenance mais dangereux s’il est mal utilisé ; le mot “root” vient d’UNIX où l’administrateur s’appelle root.
+
+---
+## Étape 10 : Intérêt labo (non opérationnel)
+En labo, un environnement privilégié peut aider à **observer des artefacts système** normalement invisibles et à **suivre le comportement runtime** d’une application à un niveau plus bas.  
+Il sert aussi à **éprouver la solidité du stockage** face à un attaquant privilégié (ex. fichiers, prefs, bases locales).  
+Cas concret : avec les privilèges root, on peut vérifier si l’app compte seulement sur la protection du système (mauvaise pratique) ou si elle applique son propre chiffrement (bonne pratique).  
+**Labo autorisé uniquement** : sur un appareil personnel/réel, cela peut casser la confiance du système et poser des problèmes de conformité.  
+Contexte légal : selon le pays, le rooting peut enfreindre des conditions d’utilisation (voire des règles sur le contournement de protections), donc il faut une autorisation explicite pour tester.
+
+---
