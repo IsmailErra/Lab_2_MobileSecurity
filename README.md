@@ -171,6 +171,14 @@ Pour chaque scénario : on note le **module**, les **entrées exactes**, le **bo
 - Écran du module avec les champs remplis + **SAVE** + message de succès.
 ![](lb2/snrio3.png)
 ---
+## Étape 6 : Lire Android Security (6 lignes max)
+La sécurité Android fonctionne en plusieurs couches, un peu comme un oignon.  
+Le **sandboxing des applications** met chaque app dans son propre espace, pour limiter les interactions avec les autres.  
+Le **modèle de permissions** sert de “filtre” : certaines ressources (caméra, contacts, stockage…) ne sont accessibles qu’après accord.  
+L’**isolation** et l’**intégrité globale du système** visent à empêcher les retouches non autorisées du système.  
+Analogie : chaque app est dans une salle fermée ; pour utiliser du matériel spécial, elle demande au prof ; et le bâtiment entier est protégé contre les modifications de sa structure.
+
+---
 ## Étape 7 — Verified Boot (idée générale + check AVD)
 
 ### Check AVD (résultats observés)
@@ -184,3 +192,11 @@ Même si `verifiedbootstate` n’est pas retourné, la présence de **AVB/vbmeta
 
 ### Résultat attendu
 ![](lb2/getGRp.png)
+
+---
+## Étape 8 : AVB (Android Verified Boot)
+AVB est l’évolution moderne de Verified Boot : il renforce le contrôle d’intégrité au démarrage via des métadonnées signées (vbmeta).  
+Il ajoute aussi une défense contre le **rollback**, pour éviter de revenir à une version plus ancienne du système.  
+Protection anti-rollback : bloquer l’installation d’anciens builds potentiellement vulnérables, comme empêcher de remplacer une serrure récente par un modèle dépassé plus facile à forcer.
+
+---
