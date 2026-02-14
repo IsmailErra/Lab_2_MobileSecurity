@@ -96,10 +96,8 @@ L’application de test (**DIVA**) a été récupérée depuis GitHub (dépôt c
 ### Version (rapport)
 La version de l’application a été relevée (car le comportement de sécurité peut varier selon la version).
 
-### Captures à ajouter
-- Commande `adb install` (Success)
-- Application DIVA ouverte (menu principal)
-- Version (`versionName` / `versionCode`)
+![](lb2/afterDivaInstall.png)
+
 
 ---
 ## Étape 7 — Verified Boot (idée générale + check AVD)
