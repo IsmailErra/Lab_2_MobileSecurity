@@ -95,7 +95,5 @@ adb devices
 ### Interprétation (simple)
 Même si `verifiedbootstate` n’est pas retourné, la présence de **AVB/vbmeta** et `veritymode=enforcing` indique que les mécanismes d’intégrité au démarrage sont actifs sur cet AVD.
 
-### Rappel (couleurs)
-- **Green** : système vérifié et intègre  
-- **Yellow/Orange** : système modifié mais boot possible  
-- **Red** : intégrité compromise
+### Résultat attendu
+![](lb2/Screenshot2026-02-14 165651.png)
