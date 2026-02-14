@@ -96,4 +96,4 @@ adb devices
 Même si `verifiedbootstate` n’est pas retourné, la présence de **AVB/vbmeta** et `veritymode=enforcing` indique que les mécanismes d’intégrité au démarrage sont actifs sur cet AVD.
 
 ### Résultat attendu
-![](lb2/Screenshot2026-02-14 165651.png)
+![](lb2/getGRp.png)
