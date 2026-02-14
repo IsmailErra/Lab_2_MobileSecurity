@@ -42,6 +42,8 @@ Obtenir des privilèges **root** sur un **AVD** (environnement jetable) et obser
 ### Journalisation (preuve)
 Exporter les 200 dernières lignes de logcat :
 
+![](lb2/part1.png)
+
 ```powershell
 adb logcat -d -t 200 > logcat_root_check.txt
 ```
@@ -57,14 +59,9 @@ Pour l’ouvrir rapidement :
 explorer .
 notepad .\logcat_root_check.txt
 ```
+![](lb2/prt1Last.png)
+![](lb2/prt1Last2.png)
 
-### Captures à ajouter
-- `adb root` (message root)
-- `adb shell id` (avec `uid=0(root)`)
-- `getprop` (lignes avb/vbmeta/verity si affichées)
-- commande `adb logcat ...` + présence du fichier `logcat_root_check.txt` (via `dir`)
-
----
 
 ## Partie 3 — Étape 3 : Démarrer un AVD propre
 
