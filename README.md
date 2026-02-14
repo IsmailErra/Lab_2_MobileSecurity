@@ -89,3 +89,20 @@ adb devices
 - Device Manager (AVD lancé / création)
 - Écran d’accueil Android (AVD propre)
 - Sortie `adb devices` (device)
+
+
+## Étape 7 — Verified Boot (idée générale + check AVD)
+
+### Check AVD (résultats observés)
+- `adb shell getprop ro.boot.verifiedbootstate` : **vide** (propriété non exposée sur cette image AVD)
+- `ro.boot.avb_version = 1.3`
+- `ro.boot.veritymode = enforcing`
+- `ro.boot.vbmeta.digest` présent (sha256)
+
+### Interprétation (simple)
+Même si `verifiedbootstate` n’est pas retourné, la présence de **AVB/vbmeta** et `veritymode=enforcing` indique que les mécanismes d’intégrité au démarrage sont actifs sur cet AVD.
+
+### Rappel (couleurs)
+- **Green** : système vérifié et intègre  
+- **Yellow/Orange** : système modifié mais boot possible  
+- **Red** : intégrité compromise
