@@ -99,7 +99,75 @@ La version de l’application a été relevée (car le comportement de sécurit�
 ### Résultat attendu
 ![](lb2/afterDivaInstall.png)
 
+---
+## Étape 5 — Définir 3 scénarios simples (DIVA)
 
+### Méthodologie
+Ces scénarios sont des **parcours utilisateur** de référence. Ils sont **simples** et **répétables** (mêmes actions, mêmes entrées, pas de contenu aléatoire).  
+Pour chaque scénario : on note le **module**, les **entrées exactes**, le **bouton cliqué** et le **résultat affiché**.
+
+---
+
+### Scénario 1 — Insecure Logging (action + message)
+**Module :** `1. Insecure Logging`  
+**Objectif :** lancer une action simple et observer le message affiché.
+
+**Étapes :**
+1. Ouvrir `1. Insecure Logging`
+2. Laisser la valeur à `0`
+3. Cliquer sur **CHECK OUT**
+4. Observer le message en bas de l’écran
+
+**Résultat observé :**
+- Message : `An error occured. Please try again later`
+
+**Capture :**
+- Écran `1. Insecure Logging` avec **CHECK OUT** + message d’erreur.
+![](lb2/snrio1.png)
+
+---
+
+### Scénario 2 — Input Validation Issues (action bouton)
+**Module :** `13. Input Validation Issues - Part 3`  
+**Objectif :** saisir une entrée et déclencher l’action principale.
+
+**Entrée saisie (texte exact) :**
+- Champ texte : `ew`
+
+**Étapes :**
+1. Ouvrir `13. Input Validation Issues - Part 3`
+2. Saisir `ew`
+3. Cliquer sur **PUSH THE RED BUTTON**
+4. Observer le message affiché
+
+**Résultat observé :**
+- Message : `Access denied!`
+
+**Capture :**
+- Écran du module avec la valeur `ew` + bouton rouge + message.
+![](lb2/snrio2.png)
+---
+
+### Scénario 3 — Insecure Data Storage (sauvegarde)
+**Module :** `3. Insecure Data Storage - Part 1`  
+**Objectif :** sauvegarder des identifiants de test et vérifier le retour.
+
+**Entrées saisies (texte exact) :**
+- Email : `ismai@emsi`
+- Mot de passe : (valeur de test, masquée à l’écran)
+
+**Étapes :**
+1. Ouvrir `3. Insecure Data Storage - Part 1`
+2. Saisir `ismai@emsi` + un mot de passe de test
+3. Cliquer sur **SAVE**
+4. Observer le message de confirmation
+
+**Résultat observé :**
+- Message : `3rd party credentials saved successfully!`
+
+**Capture :**
+- Écran du module avec les champs remplis + **SAVE** + message de succès.
+![](lb2/snrio3.png)
 ---
 ## Étape 7 — Verified Boot (idée générale + check AVD)
 
