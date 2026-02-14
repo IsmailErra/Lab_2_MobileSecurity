@@ -20,10 +20,8 @@ adb devices
 
 ### Résultat attendu
 - L’émulateur apparaît en **device** (ex: `emulator-5554   device`).
+![](lb2/pre.png)
 
-### Captures à ajouter
-- Sortie `adb devices` (avec **device**).
-- (Optionnel) écran de l’AVD en cours d’exécution.
 
 ---
 
