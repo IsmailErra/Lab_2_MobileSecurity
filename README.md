@@ -42,6 +42,7 @@ Obtenir des privilèges **root** sur un **AVD** (environnement jetable) et obser
 ### Journalisation (preuve)
 Exporter les 200 dernières lignes de logcat :
 
+### Résultat attendu
 ![](lb2/part1.png)
 
 ```powershell
@@ -59,6 +60,7 @@ Pour l’ouvrir rapidement :
 explorer .
 notepad .\logcat_root_check.txt
 ```
+### Résultats attendu
 ![](lb2/prt1Last.png)
 ![](lb2/prt1Last2.png)
 
@@ -78,12 +80,8 @@ adb devices
 ```
 
 ### Résultat attendu
-- L’émulateur apparaît en **device**.
+![](lb2/step3CleanAvd.png)
 
-### Captures à ajouter
-- Device Manager (AVD lancé / création)
-- Écran d’accueil Android (AVD propre)
-- Sortie `adb devices` (device)
 
 
 ## Étape 7 — Verified Boot (idée générale + check AVD)
