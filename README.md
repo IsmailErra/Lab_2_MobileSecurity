@@ -123,9 +123,9 @@ Pour chaque scénario : on note le **module**, les **entrées exactes**, le **bo
 
 **Capture :**
 - Écran `1. Insecure Logging` avec **CHECK OUT** + message d’erreur.
-![](lb2/snrio1.png)
 
 ---
+![](lb2/snrio1.png)
 
 ### Scénario 2 — Input Validation Issues (action bouton)
 **Module :** `13. Input Validation Issues - Part 3`  
