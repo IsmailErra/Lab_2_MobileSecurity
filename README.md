@@ -87,6 +87,7 @@ adb devices
 
 ### Source de l’APK
 L’application de test (**DIVA**) a été récupérée depuis GitHub (dépôt contenant le fichier APK), puis installée sur l’AVD via **ADB**.
+![](lb2/divaApp.png)
 
 ### Installation + Lancement
 - Installation de l’APK sur l’émulateur avec `adb install`.
