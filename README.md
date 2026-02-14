@@ -82,8 +82,25 @@ adb devices
 ### Résultat attendu
 ![](lb2/step3CleanAvd.png)
 
+---
+## Étape 4 — Installer et lancer l’app de test (DIVA)
 
+### Source de l’APK
+L’application de test (**DIVA**) a été récupérée depuis GitHub (dépôt contenant le fichier APK), puis installée sur l’AVD via **ADB**.
 
+### Installation + Lancement
+- Installation de l’APK sur l’émulateur avec `adb install`.
+- Ouverture de l’application sur l’AVD et vérification qu’un scénario simple est réalisable.
+
+### Version (rapport)
+La version de l’application a été relevée (car le comportement de sécurité peut varier selon la version).
+
+### Captures à ajouter
+- Commande `adb install` (Success)
+- Application DIVA ouverte (menu principal)
+- Version (`versionName` / `versionCode`)
+
+---
 ## Étape 7 — Verified Boot (idée générale + check AVD)
 
 ### Check AVD (résultats observés)
